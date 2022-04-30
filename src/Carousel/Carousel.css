@@ -3,6 +3,8 @@
     width: 450px;
     display: flex;
     align-items: center;
+    margin: 0 auto;
+    margin-top: 200px;
 }
 
 .window {
@@ -17,5 +19,6 @@
 }
 
 .arrow {
+    font-size: 30px;
     cursor: pointer;
 }

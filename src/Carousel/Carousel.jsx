@@ -11,14 +11,15 @@ const Carousel = ({children}) => {
   const handleArrowLeftClick = () => {
     setOffset((currentOffset) => {
         const newOffset = currentOffset + PAGE_WIDTH
-        return newOffset
+        return Math.min(newOffset, 0)
     })
   }
 
   const handleArrowRightClick = () => {
     setOffset((currentOffset) => {
         const newOffset = currentOffset - PAGE_WIDTH
-        return newOffset
+        const maxOffset = -(PAGE_WIDTH * (pages.length - 1))
+        return Math.max(newOffset, maxOffset)
     })
 }
 
