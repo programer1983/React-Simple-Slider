@@ -6,13 +6,20 @@ const PAGE_WIDTH = 450
 
 const Carousel = ({children}) => {
   const [pages, setPages] = useState([])
+  const [offset, setOffset] = useState(0)
 
   const handleArrowLeftClick = () => {
-      console.log("handleArrowLeftClick")
+    setOffset((currentOffset) => {
+        const newOffset = currentOffset + PAGE_WIDTH
+        return newOffset
+    })
   }
 
   const handleArrowRightClick = () => {
-    console.log("handleArrowRightClick")
+    setOffset((currentOffset) => {
+        const newOffset = currentOffset - PAGE_WIDTH
+        return newOffset
+    })
 }
 
 
@@ -37,7 +44,9 @@ const Carousel = ({children}) => {
     <div className="main-container">
         <FaChevronLeft className="arrow" onClick={handleArrowLeftClick}/>
         <div className="window">
-            <div className="all-pages-container">
+            <div className="all-pages-container"
+                 style={{transform: `translateX(${offset}px)`}}
+            >
                 {pages}
             </div>
         </div>
